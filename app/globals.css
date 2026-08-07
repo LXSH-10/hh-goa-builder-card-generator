@@ -1,18 +1,21 @@
 @import 'tailwindcss';
 
 :root {
-  --background: #f3efe8;
-  --foreground: #171717;
-  --card: #fffdf8;
-  --card-foreground: #171717;
-  --muted: #e4dfd5;
-  --muted-foreground: #6b665e;
-  --border: #d6cfc3;
-  --primary: #ff5a1f;
-  --primary-foreground: #fffdf8;
-  --accent: #b9ef3a;
-  --accent-foreground: #1c2911;
-  --ring: #ff5a1f;
+  --background: #f4eddf;
+  --foreground: #101820;
+  --card: #fffaf1;
+  --card-foreground: #101820;
+  --primary: #143d8d;
+  --primary-foreground: #f4eddf;
+  --secondary: #d5f1e6;
+  --secondary-foreground: #101820;
+  --muted: #e9dfd0;
+  --muted-foreground: #5f625f;
+  --accent: #f26b4f;
+  --accent-foreground: #101820;
+  --border: #cfc3b2;
+  --destructive: #b42318;
+  --ring: #143d8d;
 }
 
 @theme inline {
@@ -20,19 +23,29 @@
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-border: var(--border);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
   --color-ring: var(--ring);
   --font-sans: var(--font-geist), Arial, sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
 }
 
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--background); color: var(--foreground); }
-button, input { font: inherit; }
-::selection { background: var(--accent); color: var(--accent-foreground); }
+html { background: var(--background); }
+body { min-width: 320px; margin: 0; background: var(--background); color: var(--foreground); }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+::selection { background: var(--accent); color: var(--foreground); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+}
