@@ -77,6 +77,34 @@ button:disabled { cursor: not-allowed; }
 
 
 
+.id-card-shell { position: relative; width: 100%; max-width: 720px; aspect-ratio: 1.58 / 1; overflow: hidden; border: 10px solid var(--id-ink); border-radius: 24px; background: var(--id-paper); color: var(--id-ink); padding: clamp(1rem, 3vw, 2rem); box-shadow: 12px 12px 0 var(--id-hot), 0 22px 45px rgb(7 59 42 / 0.18); transform: perspective(1000px) rotateX(0deg) rotateY(0deg); transition: transform .35s ease, box-shadow .35s ease; }
+.id-card-shell:hover { transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) translateY(-4px); box-shadow: 16px 16px 0 var(--id-hot), 0 28px 55px rgb(7 59 42 / 0.24); }
+.id-card-shell::before { position: absolute; inset: 0; background: repeating-linear-gradient(135deg, transparent 0 24px, color-mix(in srgb, var(--id-accent) 18%, transparent) 25px 27px); content: ''; pointer-events: none; }
+.id-card-header, .id-card-body, .id-team-body, .id-card-footer { position: relative; z-index: 1; }
+.id-card-header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 3px solid var(--id-ink); padding-bottom: .7rem; }
+.id-card-mark { display: grid; size: 2.8rem; place-items: center; background: var(--id-accent); border: 2px solid var(--id-ink); font-size: 1.35rem; font-weight: 950; }
+.id-card-body { display: grid; grid-template-columns: minmax(100px, 30%) 1fr; gap: clamp(1rem, 4vw, 2rem); align-items: center; padding: clamp(1.3rem, 4vw, 2.5rem) 0; }
+.id-photo { aspect-ratio: 1 / 1.12; display: grid; place-items: center; overflow: hidden; border: 4px solid var(--id-ink); background: var(--id-accent); font-size: clamp(2rem, 8vw, 4rem); font-weight: 950; }
+.id-photo img { width: 100%; height: 100%; object-fit: cover; }
+.id-kicker { margin: 0 0 .4rem; font-family: var(--font-geist-mono), monospace; font-size: .62rem; font-weight: 900; letter-spacing: .14em; }
+.id-name { margin: 0; overflow: hidden; font-size: clamp(1.5rem, 5vw, 3.2rem); font-weight: 950; line-height: .9; letter-spacing: -.06em; text-overflow: ellipsis; text-transform: uppercase; }
+.id-handle { margin: .65rem 0 0; color: var(--id-hot); font-family: var(--font-geist-mono), monospace; font-size: .82rem; font-weight: 900; }
+.id-details { display: flex; flex-wrap: wrap; gap: .8rem 1.4rem; margin-top: 1.4rem; font-family: var(--font-geist-mono), monospace; font-size: .58rem; font-weight: 700; }
+.id-details span { display: flex; flex-direction: column; gap: .2rem; }
+.id-details b { font-size: .5rem; opacity: .65; }
+.id-card-footer { display: flex; justify-content: space-between; border-top: 3px solid var(--id-ink); padding-top: .75rem; font-family: var(--font-geist-mono), monospace; font-size: .55rem; font-weight: 900; letter-spacing: .05em; }
+.id-team-body { padding: clamp(1rem, 4vw, 2rem) 0; }
+.id-team-top { display: flex; align-items: center; gap: 1rem; }
+.id-crest { display: grid; size: 4.5rem; flex: 0 0 4.5rem; place-items: center; border: 4px solid var(--id-ink); background: var(--id-accent); font-size: 2rem; font-weight: 950; }
+.id-member-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem; margin-top: 1.2rem; }
+.id-member-tile { display: flex; min-width: 0; flex-direction: column; gap: .2rem; border: 2px solid var(--id-ink); background: var(--id-accent); padding: .65rem; font-family: var(--font-geist-mono), monospace; font-size: .58rem; }
+.id-member-tile:nth-child(even) { background: var(--id-hot); }
+.id-member-tile b { overflow: hidden; font-family: var(--font-geist), Arial, sans-serif; font-size: .78rem; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
+.id-empty { grid-column: 1 / -1; border: 2px dashed var(--id-ink); padding: 1.2rem; text-align: center; font-family: var(--font-geist-mono), monospace; font-size: .65rem; font-weight: 800; }
+.id-card-scanline { position: absolute; z-index: 2; top: -20%; left: 0; width: 100%; height: 8%; background: linear-gradient(transparent, color-mix(in srgb, var(--id-hot) 45%, transparent), transparent); animation: id-scan 4.5s linear infinite; pointer-events: none; }
+@keyframes id-scan { 0% { transform: translateY(-120%); } 100% { transform: translateY(1500%); } }
+@media (max-width: 640px) { .id-card-shell { border-width: 7px; border-radius: 16px; box-shadow: 7px 7px 0 var(--id-hot); } .id-card-shell:hover { transform: none; } .id-card-body { gap: .7rem; } .id-card-footer { font-size: .42rem; } .id-details { gap: .5rem; margin-top: .8rem; } }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }
