@@ -46,7 +46,7 @@ button { cursor: pointer; }
 button:disabled { cursor: not-allowed; }
 ::selection { background: var(--accent); color: var(--foreground); }
 
-.mode-switch-wrap { position: fixed; z-index: 20; top: 1rem; left: 50%; display: flex; width: min(calc(100% - 2rem), 25rem); transform: translateX(-50%); flex-direction: column; align-items: center; gap: .45rem; }
+.mode-switch-wrap { position: static; display: flex; width: min(100%, 25rem); flex-direction: column; align-items: center; gap: .45rem; }
 .mode-switch-label, .mode-switch-hint { font-family: var(--font-geist-mono), monospace; font-size: 10px; font-weight: 800; letter-spacing: .16em; }
 .mode-switch-label { color: var(--muted-foreground); }
 .mode-switch-hint { color: var(--muted-foreground); letter-spacing: .08em; }
@@ -61,7 +61,20 @@ button:disabled { cursor: not-allowed; }
 .mode-glitch .mode-page-enter { animation: glitch-out .28s steps(4, end) both; filter: saturate(1.8); }
 @keyframes mode-in { from { opacity: 0; transform: translateY(10px); clip-path: inset(0 0 100% 0); } to { opacity: 1; transform: translateY(0); clip-path: inset(0); } }
 @keyframes glitch-out { 0% { transform: translate(0); clip-path: inset(0); } 25% { transform: translate(-8px, 2px); clip-path: inset(12% 0 48% 0); } 50% { transform: translate(8px, -2px); clip-path: inset(55% 0 10% 0); } 75% { transform: translate(-4px); clip-path: inset(30% 0 30% 0); } 100% { transform: translate(0); opacity: .2; } }
-@media (max-width: 640px) { .mode-switch-wrap { top: .75rem; } .mode-switch { box-shadow: 3px 3px 0 var(--accent); } }
+.mode-switch-wrap-static { display: flex; flex-direction: column; gap: .5rem; }
+.mode-switch-static { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: .25rem; min-width: min(100%, 25rem); border: 1px solid var(--foreground); background: var(--foreground); padding: .25rem; box-shadow: 5px 5px 0 var(--accent); }
+.mode-switch-track-static { position: absolute; inset: .25rem auto .25rem .25rem; width: calc(50% - .375rem); background: var(--primary); transition: transform .22s steps(4, end); }
+.mode-switch-static[data-mode='team'] .mode-switch-track-static { transform: translateX(calc(100% + .25rem)); }
+.mode-button-static { position: relative; z-index: 1; display: flex; min-height: 2.75rem; align-items: center; justify-content: center; gap: .5rem; border: 0; background: transparent; color: var(--background); font-family: var(--font-geist-mono), monospace; font-size: 11px; font-weight: 900; letter-spacing: .08em; }
+.mode-button-static.active { color: var(--foreground); }
+.form-label { font-family: var(--font-geist-mono), monospace; font-size: 10px; font-weight: 900; letter-spacing: .12em; color: var(--muted-foreground); }
+.form-input { min-height: 2.9rem; width: 100%; border: 1px solid var(--border); background: var(--background); padding: .7rem .8rem; font-size: .875rem; outline: none; }
+.form-input:focus { border-color: var(--foreground); box-shadow: 3px 3px 0 var(--primary); }
+.mode-ready { animation: mode-in .42s steps(5, end) both; }
+.mode-glitching { animation: glitch-slice .26s steps(5, end) both; }
+@keyframes glitch-slice { 0% { transform: translate(0); clip-path: inset(0); filter: none; } 20% { transform: translate(-7px, 1px); clip-path: inset(10% 0 65% 0); filter: drop-shadow(7px 0 var(--accent)); } 45% { transform: translate(8px, -2px); clip-path: inset(52% 0 16% 0); filter: drop-shadow(-8px 0 var(--secondary)); } 70% { transform: translate(-4px); clip-path: inset(27% 0 36% 0); filter: drop-shadow(4px 0 var(--primary)); } 100% { transform: translate(0); clip-path: inset(0); filter: none; } }
+@media (max-width: 640px) { .mode-switch { box-shadow: 3px 3px 0 var(--accent); } .mode-switch-static { width: 100%; min-width: 0; } }
+
 
 
 @media (prefers-reduced-motion: reduce) {
