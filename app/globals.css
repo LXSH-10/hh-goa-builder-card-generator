@@ -73,7 +73,7 @@ button:disabled { cursor: not-allowed; }
 .mode-ready { animation: mode-in .42s steps(5, end) both; }
 .mode-glitching { animation: glitch-slice .26s steps(5, end) both; }
 @keyframes glitch-slice { 0% { transform: translate(0); clip-path: inset(0); filter: none; } 20% { transform: translate(-7px, 1px); clip-path: inset(10% 0 65% 0); filter: drop-shadow(7px 0 var(--accent)); } 45% { transform: translate(8px, -2px); clip-path: inset(52% 0 16% 0); filter: drop-shadow(-8px 0 var(--secondary)); } 70% { transform: translate(-4px); clip-path: inset(27% 0 36% 0); filter: drop-shadow(4px 0 var(--primary)); } 100% { transform: translate(0); clip-path: inset(0); filter: none; } }
-@media (max-width: 640px) { .mode-switch { box-shadow: 3px 3px 0 var(--accent); } .mode-switch-static { width: 100%; min-width: 0; } }
+@media (max-width: 640px) { .mode-switch { box-shadow: 3px 3px 0 var(--accent); } .mode-switch-static { display: grid; grid-template-columns: 1fr 1fr; width: 100%; min-width: 0; max-width: 100%; overflow: hidden; } .mode-button-static { min-width: 0; width: 100%; gap: .3rem; padding: .7rem .35rem; font-size: .58rem; letter-spacing: .04em; } .mode-button-static svg { flex: 0 0 auto; } }
 
 
 
@@ -103,7 +103,7 @@ button:disabled { cursor: not-allowed; }
 .id-empty { grid-column: 1 / -1; border: 2px dashed var(--id-ink); padding: 1.2rem; text-align: center; font-family: var(--font-geist-mono), monospace; font-size: .65rem; font-weight: 800; }
 .id-card-scanline { position: absolute; z-index: 2; top: -20%; left: 0; width: 100%; height: 8%; background: linear-gradient(transparent, color-mix(in srgb, var(--id-hot) 45%, transparent), transparent); animation: id-scan 4.5s linear infinite; pointer-events: none; }
 @keyframes id-scan { 0% { transform: translateY(-120%); } 100% { transform: translateY(1500%); } }
-@media (max-width: 640px) { .id-card-shell { border-width: 7px; border-radius: 16px; box-shadow: 7px 7px 0 var(--id-hot); } .id-card-shell:hover { transform: none; } .id-card-body { gap: .7rem; } .id-card-footer { font-size: .42rem; } .id-details { gap: .5rem; margin-top: .8rem; } }
+@media (max-width: 640px) { .id-card-shell { border-width: 5px; border-radius: 14px; box-shadow: 5px 5px 0 var(--id-hot); padding: .7rem; } .id-card-shell:hover { transform: none; } .id-card-header { padding-bottom: .45rem; } .id-card-body { gap: .55rem; padding: .75rem 0; } .id-card-footer { gap: .45rem; padding-top: .45rem; font-size: .38rem; } .id-card-logo { width: 2rem; height: 2rem; } .id-kicker { font-size: .44rem; } .id-handle { margin-top: .35rem; font-size: .55rem; } .id-details { gap: .35rem; margin-top: .55rem; font-size: .43rem; } .id-details b { font-size: .38rem; } .barcode-wrap { font-size: .32rem; } .barcode { height: .8rem; } }
 
 .form-panel { border: 1px solid var(--border); background: color-mix(in srgb, var(--card) 75%, transparent); padding: 1rem; box-shadow: 5px 5px 0 var(--foreground); }
 .form-section-title { display: flex; align-items: center; gap: .5rem; font-family: var(--font-geist-mono), monospace; font-size: 10px; font-weight: 950; letter-spacing: .1em; }
@@ -126,7 +126,7 @@ button:disabled { cursor: not-allowed; }
 .primary-action { border: 2px solid var(--foreground); background: var(--primary); color: var(--foreground); box-shadow: 4px 4px 0 var(--secondary); }
 .secondary-action { border: 2px solid var(--foreground); background: transparent; color: var(--foreground); }
 .primary-action:disabled { opacity: .45; }
-@media (max-width: 640px) { .stage-topline { font-size: 8px; } .preview-actions { gap: .8rem; margin-top: 1.4rem; padding-top: .6rem; } .preview-actions > * { flex: 1 1 100%; } .primary-action, .secondary-action { width: 100%; } .id-card-body { grid-template-columns: 28% 1fr; } .id-name { font-size: clamp(1.1rem, 8vw, 2rem); } }
+@media (max-width: 640px) { body { overflow-x: hidden; } .stage-topline { font-size: 8px; } .preview-actions { gap: .8rem; margin-top: 1.4rem; padding-top: .6rem; } .preview-actions > * { flex: 1 1 100%; } .primary-action, .secondary-action { width: 100%; } .id-card-body { grid-template-columns: 28% 1fr; } .id-name { font-size: clamp(1.1rem, 8vw, 2rem); } }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
